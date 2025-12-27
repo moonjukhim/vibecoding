@@ -1,0 +1,10 @@
+date,product,category,amount,quantity
+2025-01-01,A,Electronics,120000,3
+2025-01-02,A,Electronics,150000,4
+2025-01-03,A,Electronics,90000,2
+2025-01-01,B,Home,80000,2
+2025-01-02,B,Home,70000,2
+2025-01-03,B,Home,60000,1
+2025-01-01,C,Office,50000,5
+2025-01-02,C,Office,55000,6
+2025-01-03,C,Office,52000,5
