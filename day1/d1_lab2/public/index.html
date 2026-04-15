@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고객 문의 게시판</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>고객 문의 게시판</h1>
+      <p class="subtitle">궁금하신 사항을 남겨주시면 빠르게 답변 드리겠습니다.</p>
+    </header>
+
+    <!-- 목록 화면 -->
+    <div id="list-view">
+      <div class="toolbar">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="검색어를 입력하세요">
+          <button onclick="searchInquiries()">검색</button>
+        </div>
+        <button class="btn-primary" onclick="showWriteView()">문의 작성</button>
+      </div>
+
+      <table id="inquiry-table">
+        <thead>
+          <tr>
+            <th class="col-no">번호</th>
+            <th class="col-category">분류</th>
+            <th class="col-title">제목</th>
+            <th class="col-name">작성자</th>
+            <th class="col-status">상태</th>
+            <th class="col-date">작성일</th>
+          </tr>
+        </thead>
+        <tbody id="inquiry-list"></tbody>
+      </table>
+
+      <div id="empty-message" class="empty-message" style="display:none;">
+        등록된 문의가 없습니다.
+      </div>
+
+      <div id="pagination" class="pagination"></div>
+    </div>
+
+    <!-- 작성 화면 -->
+    <div id="write-view" style="display:none;">
+      <h2>문의 작성</h2>
+      <form id="inquiry-form" onsubmit="submitInquiry(event)">
+        <div class="form-row">
+          <label for="inp-name">이름 <span class="required">*</span></label>
+          <input type="text" id="inp-name" required maxlength="50">
+        </div>
+        <div class="form-row">
+          <label for="inp-email">이메일 <span class="required">*</span></label>
+          <input type="email" id="inp-email" required maxlength="100">
+        </div>
+        <div class="form-row">
+          <label for="inp-category">분류</label>
+          <select id="inp-category">
+            <option value="일반문의">일반문의</option>
+            <option value="제품문의">제품문의</option>
+            <option value="배송문의">배송문의</option>
+            <option value="교환/반품">교환/반품</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="inp-title">제목 <span class="required">*</span></label>
+          <input type="text" id="inp-title" required maxlength="200">
+        </div>
+        <div class="form-row">
+          <label for="inp-content">내용 <span class="required">*</span></label>
+          <textarea id="inp-content" rows="8" required maxlength="5000"></textarea>
+        </div>
+        <div class="form-row">
+          <label for="inp-password">비밀번호 <span class="required">*</span></label>
+          <input type="password" id="inp-password" required minlength="4" maxlength="20" placeholder="문의 확인/삭제 시 필요합니다">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" onclick="showListView()">취소</button>
+          <button type="submit" class="btn-primary">등록</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- 상세 화면 -->
+    <div id="detail-view" style="display:none;">
+      <h2 id="detail-title"></h2>
+      <div class="detail-meta">
+        <span id="detail-category" class="badge"></span>
+        <span id="detail-status" class="badge"></span>
+        <span id="detail-name"></span>
+        <span id="detail-date"></span>
+      </div>
+      <div id="detail-content" class="detail-content"></div>
+
+      <div id="ai-analysis-section" style="display:none;">
+        <h3>AI 분석 결과</h3>
+        <div class="ai-analysis">
+          <div class="ai-row">
+            <span class="ai-label">자동 분류</span>
+            <span id="ai-category" class="ai-value"></span>
+          </div>
+          <div class="ai-row">
+            <span class="ai-label">감정 분석</span>
+            <span id="ai-sentiment" class="ai-value"></span>
+          </div>
+          <div class="ai-row">
+            <span class="ai-label">긴급도</span>
+            <span id="ai-urgency" class="ai-value"></span>
+          </div>
+          <div class="ai-row">
+            <span class="ai-label">키워드</span>
+            <span id="ai-keywords" class="ai-value"></span>
+          </div>
+          <div class="ai-row">
+            <span class="ai-label">요약</span>
+            <span id="ai-summary" class="ai-value ai-summary-text"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="detail-reply-section" style="display:none;">
+        <h3>답변</h3>
+        <div id="detail-reply" class="detail-reply"></div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-secondary" onclick="showListView()">목록으로</button>
+        <button class="btn-danger" onclick="deleteInquiry()">삭제</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
