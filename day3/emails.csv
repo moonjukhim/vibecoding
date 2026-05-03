@@ -1,0 +1,51 @@
+﻿id,from,subject,body,received_at,true_label
+1,alerts@datadog.com,[P1] DB latency spike on prod-mysql-01,Production p95 > 2.4s for the last 12 minutes. PagerDuty already escalated. Please ack within 5 min.,2026-05-02T03:14,URGENT
+2,noc@cloudops.io,[CRITICAL] api.acme.com returning 5xx (rate 38%),5xx error rate jumped from 0.2% to 38% at 09:02 KST. Possible deploy regression. Immediate rollback recommended.,2026-05-02T09:05,URGENT
+3,billing-ops@stripe.com,Payout failed - action required within 24h,"Your scheduled payout of $48,210 failed due to a bank verification issue. Funds will be returned in 24h if not resolved.",2026-05-02T11:42,URGENT
+4,customer.kim@bigcorp.kr,[긴급] 결제 두 번 청구되었습니다 - 환불 요청,"주문번호 ORD-99213, 같은 금액이 두 번 결제되었습니다. 카드사에서도 확인했습니다. 오늘 내로 환불 처리 부탁드립니다.",2026-05-02T10:18,URGENT
+5,security@acme.com,[ALERT] Suspicious login from unknown IP (admin@acme.com),Multiple failed logins followed by success from 185.234.x.x (Russia). MFA not triggered. Please review session immediately.,2026-05-02T02:51,URGENT
+6,statuspage@vercel.com,Incident: Edge Network degraded - your site impacted,Vercel Edge Network is currently experiencing degraded performance in ICN1. Your project acme-web is affected.,2026-05-02T14:22,URGENT
+7,oncall@acme.com,Data pipeline down - revenue dashboard frozen since 06:00,Airflow DAG revenue_etl has been failing since 06:03. Finance team escalated; need someone on this in next 30 min.,2026-05-02T08:11,URGENT
+8,ceo@acme.com,Site is down - what's going on?,Investors are seeing a blank page on acme.com. Need a status update in 10 minutes please.,2026-05-02T15:01,URGENT
+9,support+ticket@acme.com,[SEV1] 고객사 A사 - 전 서비스 이용 불가,10분 전부터 A사 직원 200명 전원 로그인 불가. 계약상 SLA 99.9% 위반 임박. 즉시 대응 요청.,2026-05-02T16:33,URGENT
+10,monitoring@grafana.acme.io,[FIRING] DiskSpaceLow on prod-kafka-broker-3,Disk usage 96% on /var/lib/kafka. Estimated time to full: 18 min. Broker will OOM-kill once disk full.,2026-05-02T17:40,URGENT
+11,park.jihye@nexttech.co.kr,B2B 견적 요청 드립니다,"안녕하세요, 넥스트테크 박지혜 매니저입니다. 50인 규모 라이선스 견적 부탁드리며, 가능한 도입 시점도 함께 안내 부탁드립니다.",2026-05-01T10:24,GENERAL
+12,lee@startup.io,다음 주 미팅 일정 조율 요청,"지난번 말씀 주신 데모 미팅, 다음 주 화/수 오후 중 가능하신 시간대 알려주시면 캘린더 보내드리겠습니다.",2026-04-30T14:50,GENERAL
+13,john.doe@globalbiz.com,Question about your API rate limits,"Hi team, we're evaluating your platform. Could you share the per-minute and per-day rate limits on the Pro plan?",2026-05-01T08:12,GENERAL
+14,partnership@fintechco.com,Partnership inquiry - co-marketing opportunity,We'd love to explore a joint webinar on AI in fintech. Are you open to a 30-min intro call next week?,2026-04-29T11:00,GENERAL
+15,kim.consultant@deloitte.com,리서치 인터뷰 요청 (30분),AI Agent 시장 리서치 진행 중입니다. 30분 정도 사례 인터뷰 가능하실지 문의드립니다.,2026-04-28T16:30,GENERAL
+16,invoice@vendor.com,Invoice #INV-2026-0418 attached,"Please find attached the invoice for April consulting services. Net 30, due May 18.",2026-04-30T09:00,GENERAL
+17,events@aiseoul.org,AI Seoul 2026 발표 제안,올해 11월 AI Seoul 컨퍼런스에 키노트 발표를 제안드립니다. 자세한 내용은 첨부 PDF 참고 부탁드립니다.,2026-04-27T13:18,GENERAL
+18,recruiter@talenthub.kr,시니어 ML 엔지니어 추천 드립니다,현재 채용 중이신 ML 엔지니어 포지션에 적합한 후보자 3명 추천드립니다. 이력서 첨부합니다.,2026-04-29T17:45,GENERAL
+19,press@techcrunch.com,Interview request - your Series B announcement,Congrats on the round! Would your CEO be available for a 20-min interview this Thursday?,2026-05-01T15:33,GENERAL
+20,student@university.edu,Question about your tech blog post on RAG,"Hi, I'm a CS student writing my thesis on retrieval. Could you clarify how you handle document chunking?",2026-04-28T22:10,GENERAL
+21,choi@designstudio.kr,랜딩페이지 리뉴얼 견적,"지난번 문의드린 랜딩페이지 리뉴얼 작업, 견적서 송부드리니 검토 부탁드립니다.",2026-04-30T11:25,GENERAL
+22,legal@partnerco.com,MSA draft for review,Attached is the MSA draft. Our legal team would appreciate your comments by next Friday.,2026-04-29T10:08,GENERAL
+23,yoon@biztoday.co.kr,기사 코멘트 요청 (AI Agent 도입 동향),이번 주 발행 예정 기사에 한 문단 코멘트 부탁드립니다. 마감은 금요일 오후 5시까지입니다.,2026-04-30T13:00,GENERAL
+24,workshop@meetup.kr,사내 워크숍 강사 섭외 문의,5월 말 자사 개발자 대상 LangGraph 워크숍 진행 가능하신지 문의드립니다. 인원 약 30명입니다.,2026-05-01T16:40,GENERAL
+25,api-support@stripe.com,Re: Webhook signature verification question,"Thanks for reaching out. Yes, our webhook signature uses HMAC-SHA256 with your endpoint secret. Docs link below.",2026-04-29T09:30,GENERAL
+26,hr@anothercorp.com,Reference check for candidate Jane Park,We are considering Jane Park for a senior role. Could you confirm her dates of employment and role?,2026-04-28T14:00,GENERAL
+27,sales-eu@vendor.io,Renewal quote for your annual subscription,Your annual plan renews on June 12. Attached is the renewal quote with 5% loyalty discount applied.,2026-05-01T12:15,GENERAL
+28,kim.dev@opensourcefan.dev,Bug report: typo in your README example,Loving the library! Quick note: the install command in section 2 is missing a hyphen.,2026-04-30T20:00,GENERAL
+29,operations@coworking.space,회의실 예약 확인 메일,5월 4일 오후 2-5시 5층 대회의실 예약이 확정되었습니다. 변경 시 24시간 전 연락 부탁드립니다.,2026-05-01T09:45,GENERAL
+30,support@slack.com,Re: Question about Enterprise Grid pricing,Thanks for your interest. Pricing depends on seat count and add-ons. Could you share your team size?,2026-04-29T15:12,GENERAL
+31,promo@winbig-deals.biz,🎉 You've WON a brand new iPhone 17 Pro!!!,Congratulations!!! Click here within 24 hours to claim your FREE iPhone. No purchase necessary. Limited offer!,2026-05-01T03:22,SPAM
+32,invest@cryptomoon-x.cc,"Turn $100 into $10,000 in 7 days - Guaranteed",Our AI trading bot has 99.7% accuracy. Join now and start earning passive income. CLICK THE LINK!!,2026-04-30T04:01,SPAM
+33,hr-update@acme-secure-login.ru,Your account will be SUSPENDED in 24 hours,We detected unusual activity. Verify your password here immediately or your account will be permanently disabled.,2026-05-01T01:44,SPAM
+34,offers@cheap-pharma-online.top,Blue pills 80% OFF - no prescription needed,Best prices guaranteed. Discreet shipping worldwide. Order now and get free samples. Click to shop.,2026-04-29T02:18,SPAM
+35,noreply@dhl-package-delivery.info,Your package is on hold - pay $2.99 to release,We attempted delivery but a customs fee is unpaid. Click the link to settle and receive your package today.,2026-05-01T05:30,SPAM
+36,loans@quickcash-247.biz,"Pre-approved $50,000 loan - no credit check","You qualify for a $50,000 personal loan with 0% APR for the first 12 months. Apply in 60 seconds.",2026-04-28T07:00,SPAM
+37,vip@royal-casino-online.win,200 FREE SPINS waiting for you 🎰,Exclusive VIP bonus! Deposit $10 and get $200 + 200 free spins. Play now and win big. Limited time!,2026-04-30T22:48,SPAM
+38,seo@rankboost-pro.online,Get on Google page 1 - guaranteed in 7 days,Our SEO experts can rank your website #1 on Google. 100% guaranteed or your money back. Reply YES to start.,2026-04-29T19:55,SPAM
+39,admin@itun3s-billing.com,Receipt: Apple Music subscription $99.99,"Your Apple ID was charged $99.99 for a 1-year subscription. If you did not authorize, click here to dispute.",2026-05-01T06:12,SPAM
+40,realestate@dream-condos-jeju.shop,제주도 한정 분양 - 마감 임박! 月 10만원!!,제주도 럭셔리 콘도 한정 100세대 분양! 월 10만원으로 내집 마련의 꿈을!! 지금 바로 클릭하세요!!!,2026-04-30T08:33,SPAM
+41,hr@acme.com,[공지] 5월 6일 임시공휴일 휴무 안내,어린이날 대체공휴일로 5월 6일(월) 전사 휴무입니다. 긴급 대응 인력은 별도 안내드립니다.,2026-04-28T10:00,INTERNAL
+42,it-support@acme.com,[안내] 5/3 토요일 사내 VPN 점검 (02:00~04:00),토요일 새벽 정기 점검으로 VPN 접속이 약 2시간 불가합니다. 업무 일정 참고 부탁드립니다.,2026-04-29T14:00,INTERNAL
+43,people@acme.com,2026 상반기 인사평가 일정 안내,5월 13일부터 6월 7일까지 상반기 평가가 진행됩니다. 평가 가이드는 사내 위키 People 섹션에 게시되었습니다.,2026-04-30T11:30,INTERNAL
+44,security-team@acme.com,[필수] 분기별 정보보안 교육 이수 요청,전 직원 대상 2분기 정보보안 교육이 오픈되었습니다. 5월 31일까지 LMS에서 이수 부탁드립니다.,2026-05-01T09:15,INTERNAL
+45,ceo-office@acme.com,[All-hands] 5월 전사 미팅 - 5/15 (목) 16:00,이번 달 전사 미팅은 5월 15일 목요일 오후 4시 본사 대강당에서 진행됩니다. 원격 참여 링크는 별도 공지.,2026-04-29T17:00,INTERNAL
+46,finance@acme.com,[공지] 4월 법인카드 사용 내역 정산 요청,4월 법인카드 사용자는 5월 5일까지 영수증 첨부 후 정산 요청 부탁드립니다. 미정산 시 급여 차감될 수 있습니다.,2026-04-30T15:45,INTERNAL
+47,welfare@acme.com,[복지] 5월 가정의 달 기프트 신청 안내,직원 복지로 가정의 달 기프트(택1)를 제공합니다. 사내 포털에서 5월 8일까지 신청해주세요.,2026-04-28T13:20,INTERNAL
+48,workplace@acme.com,[안내] 본사 9층 카페테리아 리뉴얼 공사 (5/10~5/17),9층 카페테리아 리뉴얼 공사로 해당 기간 동안 8층 임시 식당을 이용해주시기 바랍니다.,2026-04-30T10:55,INTERNAL
+49,compliance@acme.com,[정책 개정] 재택근무 가이드라인 v2.3,재택근무 가이드라인이 5월 1일부로 v2.3으로 개정되었습니다. 주요 변경사항은 첨부 문서를 확인해주세요.,2026-04-30T16:00,INTERNAL
+50,org@acme.com,[조직개편] 5월 1일자 플랫폼 본부 신설 안내,5월 1일자로 플랫폼 본부가 신설되며 기존 인프라/데이터/AI팀이 이관됩니다. 상세 조직도는 사내망 참고.,2026-04-29T18:30,INTERNAL
