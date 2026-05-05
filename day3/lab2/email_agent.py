@@ -1,13 +1,15 @@
 import asyncio
 import json
 import sys
+from pathlib import Path
 from fastmcp import Client
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-INPUT_CSV = r"C:\claude\mcp\day3\emails.csv"
-OUTPUT_CSV = r"C:\claude\mcp\day3\emails_labeled.csv"
-SERVER_SCRIPT = r"C:\claude\mcp\day3\email_mcp_server.py"
+BASE = Path(__file__).parent
+INPUT_CSV = str(BASE / "emails.csv")
+OUTPUT_CSV = str(BASE / "emails_labeled.csv")
+SERVER_SCRIPT = str(BASE / "email_mcp_server.py")
 
 
 def unwrap(result):
