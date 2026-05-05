@@ -1,0 +1,21 @@
+﻿id,from,subject,body,received_at,true_label
+1,alerts@datadog.com,[P1] DB latency spike on prod-mysql-01,Production p95 > 2.4s for the last 12 minutes. PagerDuty already escalated. Please ack within 5 min.,2026-05-02T03:14,URGENT
+2,noc@cloudops.io,[CRITICAL] api.acme.com returning 5xx (rate 38%),5xx error rate jumped from 0.2% to 38% at 09:02 KST. Possible deploy regression. Immediate rollback recommended.,2026-05-02T09:05,URGENT
+3,billing-ops@stripe.com,Payout failed - action required within 24h,"Your scheduled payout of $48,210 failed due to a bank verification issue. Funds will be returned in 24h if not resolved.",2026-05-02T11:42,URGENT
+4,customer.kim@bigcorp.kr,[긴급] 결제 두 번 청구되었습니다 - 환불 요청,"주문번호 ORD-99213, 같은 금액이 두 번 결제되었습니다. 카드사에서도 확인했습니다. 오늘 내로 환불 처리 부탁드립니다.",2026-05-02T10:18,URGENT
+5,security@acme.com,[ALERT] Suspicious login from unknown IP (admin@acme.com),Multiple failed logins followed by success from 185.234.x.x (Russia). MFA not triggered. Please review session immediately.,2026-05-02T02:51,URGENT
+6,statuspage@vercel.com,Incident: Edge Network degraded - your site impacted,Vercel Edge Network is currently experiencing degraded performance in ICN1. Your project acme-web is affected.,2026-05-02T14:22,URGENT
+7,oncall@acme.com,Data pipeline down - revenue dashboard frozen since 06:00,Airflow DAG revenue_etl has been failing since 06:03. Finance team escalated; need someone on this in next 30 min.,2026-05-02T08:11,URGENT
+8,ceo@acme.com,Site is down - what's going on?,Investors are seeing a blank page on acme.com. Need a status update in 10 minutes please.,2026-05-02T15:01,URGENT
+9,support+ticket@acme.com,[SEV1] 고객사 A사 - 전 서비스 이용 불가,10분 전부터 A사 직원 200명 전원 로그인 불가. 계약상 SLA 99.9% 위반 임박. 즉시 대응 요청.,2026-05-02T16:33,URGENT
+10,monitoring@grafana.acme.io,[FIRING] DiskSpaceLow on prod-kafka-broker-3,Disk usage 96% on /var/lib/kafka. Estimated time to full: 18 min. Broker will OOM-kill once disk full.,2026-05-02T17:40,URGENT
+11,park.jihye@nexttech.co.kr,B2B 견적 요청 드립니다,"안녕하세요, 넥스트테크 박지혜 매니저입니다. 50인 규모 라이선스 견적 부탁드리며, 가능한 도입 시점도 함께 안내 부탁드립니다.",2026-05-01T10:24,GENERAL
+12,lee@startup.io,다음 주 미팅 일정 조율 요청,"지난번 말씀 주신 데모 미팅, 다음 주 화/수 오후 중 가능하신 시간대 알려주시면 캘린더 보내드리겠습니다.",2026-04-30T14:50,GENERAL
+13,john.doe@globalbiz.com,Question about your API rate limits,"Hi team, we're evaluating your platform. Could you share the per-minute and per-day rate limits on the Pro plan?",2026-05-01T08:12,GENERAL
+14,partnership@fintechco.com,Partnership inquiry - co-marketing opportunity,We'd love to explore a joint webinar on AI in fintech. Are you open to a 30-min intro call next week?,2026-04-29T11:00,GENERAL
+15,kim.consultant@deloitte.com,리서치 인터뷰 요청 (30분),AI Agent 시장 리서치 진행 중입니다. 30분 정도 사례 인터뷰 가능하실지 문의드립니다.,2026-04-28T16:30,GENERAL
+16,invoice@vendor.com,Invoice #INV-2026-0418 attached,"Please find attached the invoice for April consulting services. Net 30, due May 18.",2026-04-30T09:00,GENERAL
+17,events@aiseoul.org,AI Seoul 2026 발표 제안,올해 11월 AI Seoul 컨퍼런스에 키노트 발표를 제안드립니다. 자세한 내용은 첨부 PDF 참고 부탁드립니다.,2026-04-27T13:18,GENERAL
+18,recruiter@talenthub.kr,시니어 ML 엔지니어 추천 드립니다,현재 채용 중이신 ML 엔지니어 포지션에 적합한 후보자 3명 추천드립니다. 이력서 첨부합니다.,2026-04-29T17:45,GENERAL
+19,press@techcrunch.com,Interview request - your Series B announcement,Congrats on the round! Would your CEO be available for a 20-min interview this Thursday?,2026-05-01T15:33,GENERAL
+20,student@university.edu,Question about your tech blog post on RAG,"Hi, I'm a CS student writing my thesis on retrieval. Could you clarify how you handle document chunking?",2026-04-28T22:10,GENERAL
