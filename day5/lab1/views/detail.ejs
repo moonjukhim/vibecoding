@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= row.subject || '(제목 없음)' %> · 분류 이메일 게시판</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a href="/" class="brand">📬 분류 이메일 게시판</a>
+    </div>
+  </header>
+  <main class="container">
+    <article class="post">
+      <h1 class="post-title"><%= row.subject || '(제목 없음)' %></h1>
+      <div class="post-meta">
+        <span>#<%= row.id %></span>
+        <% if (row.category) { %>
+          <span class="badge cat-<%= (row.category || '').toLowerCase().replace(/[^a-z0-9]+/g,'-') %>"><%= row.category %></span>
+        <% } %>
+        <% if (row.confidence !== null && row.confidence !== undefined) { %>
+          <span>신뢰도 <strong><%= (row.confidence * 100).toFixed(1) %>%</strong></span>
+        <% } %>
+        <% if (row.classified_at) { %>
+          <span>분류 <%= new Date(row.classified_at).toLocaleString('ko-KR') %></span>
+        <% } %>
+      </div>
+
+      <dl class="post-info">
+        <dt>발신자</dt>
+        <dd><%= row.sender || '-' %></dd>
+        <dt>이메일 ID</dt>
+        <dd><code><%= row.email_id || '-' %></code></dd>
+        <dt>수신 일시</dt>
+        <dd><%= row.received_at || '-' %></dd>
+        <% if (row.true_label) { %>
+          <dt>실제 라벨</dt>
+          <dd><%= row.true_label %></dd>
+        <% } %>
+        <% if (row.reason) { %>
+          <dt>분류 근거</dt>
+          <dd><%= row.reason %></dd>
+        <% } %>
+      </dl>
+
+      <div class="post-body">
+        <h2>본문</h2>
+        <pre><%= row.body || '(본문 없음)' %></pre>
+      </div>
+
+      <nav class="post-nav">
+        <% if (nav.prev_id) { %>
+          <a href="/post/<%= nav.prev_id %>">‹ 이전 글</a>
+        <% } else { %>
+          <span class="disabled">‹ 이전 글</span>
+        <% } %>
+        <a href="/" class="list-btn">목록</a>
+        <% if (nav.next_id) { %>
+          <a href="/post/<%= nav.next_id %>">다음 글 ›</a>
+        <% } else { %>
+          <span class="disabled">다음 글 ›</span>
+        <% } %>
+      </nav>
+    </article>
+  </main>
+</body>
+</html>
