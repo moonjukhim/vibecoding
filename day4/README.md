@@ -1,5 +1,41 @@
 ### Lab1
 
+##### Before
+
+```text
+LangGraph를 사용해 리서치 보고서를 자동 작성하는 멀티에이전트 시스템을 구현해줘. 다음 명세를 그대로 따라줘.
+모델은 OpenAI를 사용하도록 작성해줘.
+
+### 1. 아키텍처
+
+```
+[Topic 입력]
+     ▼
+  Planner       — 주제를 3~5개 섹션으로 분해
+     ▼ (Send API로 섹션별 병렬 fan-out)
+  Researcher    — Tavily 웹 검색으로 섹션별 자료 수집
+     ▼
+   Writer       — 자료 기반으로 섹션 초안 작성
+     ▼  ◄────────┐
+   Critic        │  approved=False면 Writer로 루프백 (최대 2회)
+     │           │
+     ├───────────┘
+     ▼ (모든 섹션 approved)
+   Editor        — 서론·결론·참고문헌 추가, 통합
+     ▼
+[최종 보고서]
+```
+
+### 2. 핵심 패턴 4가지
+
+1. **Send API 병렬화**: 계획된 섹션 수만큼 researcher/writer를 동적으로 동시 실행
+2. **Critic 피드백 루프**: 섹션별로 writer↔critic 루프, `MAX_REVISIONS=2`로 무한 루프 방지
+3. **Map-Reduce 합성**: 병렬 결과를 Annotated 리듀서로 race-free하게 머지
+4. **단계별 상태 누적**: plan → sections → final_report 순으로 공유 상태에 축적
+```
+
+##### After
+
 ```text
 # Single-Agent 5-Stage Research Graph 작성 프롬프트
 
