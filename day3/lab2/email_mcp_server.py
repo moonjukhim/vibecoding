@@ -44,7 +44,7 @@ LABEL: SPAM
 
 EMAIL:
 from: hr@acme.com
-subject: [공지] 2026년 하반기 건강검진 안내
+subject: [공지] 2026년 하반기 건강검진 안내    
 body: 전 임직원 대상 건강검진 일정과 신청 방법을 안내드립니다. 마감 5/20.
 LABEL: INTERNAL
 
