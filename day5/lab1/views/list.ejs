@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>분류 이메일 게시판</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a href="/" class="brand">📬 분류 이메일 게시판</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="toolbar">
+      <form method="get" action="/" class="search">
+        <input type="text" name="q" placeholder="제목·발신자·본문 검색" value="<%= q %>" />
+        <% if (category) { %>
+          <input type="hidden" name="category" value="<%= category %>" />
+        <% } %>
+        <button type="submit">검색</button>
+        <% if (q || category) { %>
+          <a href="/" class="reset">초기화</a>
+        <% } %>
+      </form>
+      <div class="categories">
+        <a href="/<%= q ? `?q=${encodeURIComponent(q)}` : '' %>"
+           class="chip <%= !category ? 'active' : '' %>">전체</a>
+        <% categories.forEach(function(c){ %>
+          <a href="/?category=<%= encodeURIComponent(c.category) %><%= q ? `&q=${encodeURIComponent(q)}` : '' %>"
+             class="chip <%= category === c.category ? 'active' : '' %>">
+            <%= c.category %> <span class="count"><%= c.n %></span>
+          </a>
+        <% }); %>
+      </div>
+    </section>
+
+    <p class="meta">총 <strong><%= total %></strong>건
+      <% if (category) { %>· 카테고리: <strong><%= category %></strong><% } %>
+      <% if (q) { %>· 검색어: "<strong><%= q %></strong>"<% } %>
+    </p>
+
+    <table class="board">
+      <thead>
+        <tr>
+          <th class="col-id">번호</th>
+          <th class="col-cat">카테고리</th>
+          <th class="col-subject">제목</th>
+          <th class="col-sender">발신자</th>
+          <th class="col-conf">신뢰도</th>
+          <th class="col-date">분류일시</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (rows.length === 0) { %>
+          <tr><td colspan="6" class="empty">표시할 게시글이 없습니다.</td></tr>
+        <% } %>
+        <% rows.forEach(function(r){ %>
+          <tr>
+            <td class="col-id"><%= r.id %></td>
+            <td class="col-cat">
+              <% if (r.category) { %>
+                <span class="badge cat-<%= (r.category || '').toLowerCase().replace(/[^a-z0-9]+/g,'-') %>">
+                  <%= r.category %>
+                </span>
+              <% } else { %>
+                <span class="badge muted">미분류</span>
+              <% } %>
+            </td>
+            <td class="col-subject">
+              <a href="/post/<%= r.id %>"><%= r.subject || '(제목 없음)' %></a>
+            </td>
+            <td class="col-sender" title="<%= r.sender || '' %>"><%= r.sender || '-' %></td>
+            <td class="col-conf">
+              <% if (r.confidence !== null && r.confidence !== undefined) { %>
+                <%= (r.confidence * 100).toFixed(1) %>%
+              <% } else { %>-<% } %>
+            </td>
+            <td class="col-date">
+              <%= r.classified_at ? new Date(r.classified_at).toLocaleString('ko-KR') : '-' %>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <% if (totalPages > 1) {
+         const params = new URLSearchParams();
+         if (category) params.set('category', category);
+         if (q) params.set('q', q);
+         function url(p){ params.set('page', p); return '/?' + params.toString(); }
+         const window = 5;
+         const start = Math.max(1, currentPage - Math.floor(window/2));
+         const end = Math.min(totalPages, start + window - 1);
+    %>
+      <nav class="pager">
+        <% if (currentPage > 1) { %>
+          <a href="<%= url(1) %>">«</a>
+          <a href="<%= url(currentPage - 1) %>">‹</a>
+        <% } %>
+        <% for (let p = start; p <= end; p++) { %>
+          <% if (p === currentPage) { %>
+            <span class="current"><%= p %></span>
+          <% } else { %>
+            <a href="<%= url(p) %>"><%= p %></a>
+          <% } %>
+        <% } %>
+        <% if (currentPage < totalPages) { %>
+          <a href="<%= url(currentPage + 1) %>">›</a>
+          <a href="<%= url(totalPages) %>">»</a>
+        <% } %>
+      </nav>
+    <% } %>
+  </main>
+</body>
+</html>
