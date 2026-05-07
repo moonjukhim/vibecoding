@@ -1,3 +1,77 @@
+### Lab5-1
+
+```text
+ ---
+  # 역할
+  당신은 LangGraph에 능숙한 시니어 AI 엔지니어다. 아래 사양에 맞춰
+  "실습 5-1 — 멀티 에이전트 시장 조사 파이프라인"을 구현하라.
+
+  # 입력 (런타임)
+  사용자 질의: "전기차 배터리 시장 동향 조사해줘"
+  (질의는 환경변수 LAB_QUERY로 교체 가능해야 한다)
+
+  # 처리 흐름 — LangGraph StateGraph로 구성
+  1) Planner 노드
+     - 사용자의 한 줄 질의를 서로 독립적이고 병렬 실행 가능한
+       하위 작업 3~4개로 분해한다.
+     - 각 하위 작업은 {id, title, query} 스키마를 따른다.
+     - LLM의 structured output(Pydantic)으로 반환한다.
+
+  2) Workers 노드 (병렬)
+     - LangGraph의 Send API로 하위 작업 수만큼 fan-out하여 병렬 실행한다.
+     - 각 워커는 (a) 외부 검색으로 근거 스니펫·링크 수집,
+       (b) LLM으로 한국어 요약(5~8문장, 수치/기업/연도 인용)을 수행한다.
+     - 결과는 {id, title, summary, sources, tokens, seconds, failed} 형태로
+       상태에 add 리듀서로 누적된다.
+
+  3) Aggregator 노드
+     - 워커 결과를 id 순으로 정렬해 섹션을 합치고,
+       맨 앞에 한 문단 Executive Summary를 추가한 마크다운 초안을 생성한다.
+
+  4) Judge 노드 (LLM-as-a-Judge)
+     - 초안을 5점 만점으로 채점한다.
+       기준: completeness / accuracy / readability / actionability / overall
+     - rationale(근거)과 issues(개선점 리스트)를 함께 산출한다.
+     - 결과를 즉시 scorecard.json에 저장한다.
+
+  5) HITL 게이트
+     - publish 직전 노드에서 interrupt_before로 그래프를 일시정지한다.
+     - CLI는 채점 결과와 리포트 미리보기(1500자)를 보여준 뒤
+       사용자에게 [y/N] 승인을 받고, update_state로 approved 플래그를
+       반영해 그래프를 재개한다.
+
+  6) Publish 노드
+     - approved=True일 때만 report.md를 디스크에 기록한다.
+     - 거절되면 publish_skipped 메트릭만 남긴다.
+
+  # Metrics — 운영 관찰성
+  - 모든 노드는 metrics.jsonl에 한 줄 JSON으로
+    {ts, event, tokens?, seconds?, failed?, ...}을 append한다.
+  - 이벤트 종류: run_start, planner, worker, aggregator, judge,
+    hitl_resume, publish, publish_skipped.
+
+  # 산출물
+  - report.md       : 사람이 승인한 최종 한국어 마켓 리포트
+  - scorecard.json  : Judge 채점 결과 (점수 + 근거 + 개선점)
+  - dashboard.py    : Streamlit 모니터링 화면
+                      · 총 토큰 / 누적 시간 / 워커 호출 / 실패 수 / 실패율 KPI
+                      · 이벤트 로그 테이블, 이벤트별 누적 시간 막대그래프
+                      · Judge 스코어카드 카드뷰 + rationale/issues
+                      · 최종 report.md 미리보기
+
+  # 기술 스택 / 제약
+  - LangGraph(StateGraph + Send + interrupt_before + MemorySaver)
+  - LLM은 OpenAI(ChatOpenAI, 기본 gpt-4o-mini, LAB_MODEL로 교체 가능)
+  - 검색은 langchain-community의 무료 검색 도구(예: DuckDuckGoSearchResults)
+  - Streamlit + pandas로 대시보드 구성
+  - python-dotenv로 .env 로드, OPENAI_API_KEY 사용
+  - 의존성은 requirements.txt로 관리
+
+  # 결과물
+  다음 파일들을 단일 디렉토리에 생성하라:
+  agent.py, dashboard.py, requirements.txt, .env.example
+
+```
 
 1. Node.js 설치
 
