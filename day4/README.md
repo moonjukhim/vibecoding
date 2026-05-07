@@ -216,7 +216,9 @@ category      TEXT NOT NULL           -- 분류 결과
 confidence    REAL
 reason        TEXT
 classified_at TIMESTAMPTZ DEFAULT NOW()
+```
 
+```text
 ## 9. 결과 검증 쿼리
 
 # sql
