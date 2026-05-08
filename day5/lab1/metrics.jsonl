@@ -1,0 +1,20 @@
+{"ts": "2026-05-07T21:12:18", "event": "run_start", "query": "전기차 배터리 시장 동향 조사해줘", "model": "gpt-4o-mini", "thread": "run-1778155938"}
+{"ts": "2026-05-07T21:12:23", "event": "planner", "subtasks": 4, "seconds": 5.31}
+{"ts": "2026-05-07T21:12:27", "event": "worker", "id": "s1", "title": "전기차 배터리 시장 규모 분석", "tokens": 302, "seconds": 4.32, "failed": true}
+{"ts": "2026-05-07T21:12:28", "event": "worker", "id": "s4", "title": "전기차 배터리 정책 및 규제", "tokens": 292, "seconds": 5.56, "failed": true}
+{"ts": "2026-05-07T21:12:29", "event": "worker", "id": "s3", "title": "전기차 배터리 주요 기업 분석", "tokens": 345, "seconds": 6.16, "failed": true}
+{"ts": "2026-05-07T21:12:29", "event": "worker", "id": "s2", "title": "전기차 배터리 기술 동향", "tokens": 314, "seconds": 6.24, "failed": true}
+{"ts": "2026-05-07T21:12:46", "event": "aggregator", "tokens": 1755, "seconds": 16.56}
+{"ts": "2026-05-07T21:12:51", "event": "judge", "overall": 3, "seconds": 5.21}
+{"ts": "2026-05-07T21:12:51", "event": "hitl_resume", "approved": false}
+{"ts": "2026-05-07T21:12:51", "event": "publish_skipped", "reason": "not_approved"}
+{"ts": "2026-05-07T21:13:51", "event": "run_start", "query": "전기차 배터리 시장 동향 조사해줘", "model": "gpt-4o-mini", "thread": "run-1778156031"}
+{"ts": "2026-05-07T21:13:55", "event": "planner", "subtasks": 4, "seconds": 3.94}
+{"ts": "2026-05-07T21:13:58", "event": "worker", "id": "s1", "title": "전기차 배터리 시장 규모 분석", "tokens": 300, "seconds": 2.49, "failed": true}
+{"ts": "2026-05-07T21:13:58", "event": "worker", "id": "s3", "title": "전기차 배터리 주요 기업 분석", "tokens": 332, "seconds": 2.96, "failed": true}
+{"ts": "2026-05-07T21:13:59", "event": "worker", "id": "s4", "title": "전기차 배터리 정책 및 규제", "tokens": 346, "seconds": 3.78, "failed": true}
+{"ts": "2026-05-07T21:14:00", "event": "worker", "id": "s2", "title": "전기차 배터리 기술 동향", "tokens": 401, "seconds": 4.28, "failed": true}
+{"ts": "2026-05-07T21:14:14", "event": "aggregator", "tokens": 1979, "seconds": 14.95}
+{"ts": "2026-05-07T21:14:18", "event": "judge", "overall": 3, "seconds": 3.04}
+{"ts": "2026-05-07T21:14:18", "event": "hitl_resume", "approved": true}
+{"ts": "2026-05-07T21:14:18", "event": "publish", "path": "C:\\claude\\mcp\\day5-2\\report.md"}

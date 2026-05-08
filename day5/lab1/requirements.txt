@@ -1,0 +1,9 @@
+langgraph>=0.2.40
+langchain>=0.3.0
+langchain-openai>=0.2.0
+langchain-community>=0.3.0
+duckduckgo-search>=6.3.0
+pydantic>=2.7
+python-dotenv>=1.0
+streamlit>=1.32
+pandas>=2.1
